@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="navbar.html"::header>
+
+</head>
+<body>
+<div th:replace="modals::skeet-modal"></div>
+<div th:replace="modals::login-modal"></div>
+<div th:replace="modals::profile-modal"></div>
+<div class="container-fluid">
+    <div class="d-flex flex-row">
+        <div class="col-3 flex-column flex-fill"></div>
+        <div class="col-6 justify-content-center flex-fill">
+            <div th:replace="skeet::allskeets"></div>
+        </div>
+        <div class="col-3 flex-column flex-fill"></div>
+    </div>
+</div>
+
+</body>
+</html>

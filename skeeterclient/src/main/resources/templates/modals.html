@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<!--Modal: Login / Register Form-->
+<div th:fragment="login-modal" class="modal fade loginMod" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal" role="document">
+
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Modal cascading tabs-->
+                <div class="modal-c-tabs">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
+                                Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
+                                Register</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panels -->
+
+                    <div class="tab-content">
+
+                        <!--Panel 7-->
+                        <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+                            <form th:action="@{/login}" method="POST"><!--Body-->
+                            <div class="modal-body mb-1">
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-envelope prefix"></i>
+                                    <input type="email" name="username" id="modalLRInput10" class="form-control form-control-sm validate" placeholder="Your email">
+                                    <!--<label data-error="wrong" data-success="right" for="modalLRInput10"></label>-->
+                                </div>
+
+                                <div class="md-form form-sm mb-4">
+                                    <i class="fas fa-lock prefix"></i>
+                                    <input type="password" name="password" id="modalLRInput11" class="form-control form-control-sm validate" placeholder="Your password">
+                                    <!--<label data-error="wrong" data-success="right" for="modalLRInput11"></label>-->
+                                </div>
+                                <div class="text-center mt-2">
+                                    <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
+                                </div>
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                            </div>
+                            </form>
+                        </div>
+
+                        <!--/.Panel 7-->
+
+                        <!--Panel 8-->
+
+                        <div class="tab-pane fade" id="panel8" role="tabpanel">
+                            <form th:action="@{/register}" modelAttribute="usr" method="POST">
+                            <!--Body-->
+                            <div class="modal-body">
+
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-user prefix grey-text"></i>
+                                    <input type="text" id="modalLRInput12" class="form-control form-control-sm validate" placeholder="Username" name="username">
+                                    <!--<label data-error="wrong" data-success="right" for="modalLRInput12">Username</label>-->
+                                </div>
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-user prefix grey-text"></i>
+                                    <input type="text" id="modalLRInput13" class="form-control form-control-sm validate" placeholder="First name" name="firstName">
+                                    <!--<label data-error="wrong" data-success="right" for="modalLRInput13">First name</label>-->
+                                </div>
+
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-user prefix grey-text"></i>
+                                    <input type="text" id="modalLRInput14" class="form-control form-control-sm validate" placeholder="Last name" name="lastName">
+                                    <!--<label data-error="wrong" data-success="right" for="modalLRInput14">Last name</label>-->
+                                </div>
+
+
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-envelope prefix"></i>
+                                    <input type="email" id="modalLRInput15" class="form-control form-control-sm validate" placeholder="Your email" name="email">
+                                    <!--<label data-error="wrong" data-success="right" for="modalLRInput15">Your email</label>-->
+                                </div>
+
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-lock prefix"></i>
+                                    <input type="password" id="modalLRInput16" class="form-control form-control-sm validate" placeholder="Your password" name="password">
+                                    <!--<label data-error="wrong" data-success="right" for="modalLRInput16">Your password</label>-->
+                                </div>
+
+                                <div class="text-center form-sm mt-2">
+                                    <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+                                </div>
+
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                            </div>
+                            </form>
+                        </div>
+
+                        <!--/.Panel 8-->
+                    </div>
+
+                </div>
+            </div>
+
+            <!--/.Content-->
+    </div>
+</div>
+<!--Modal: Login / Register Form-->
+<!-- New modal for tweet/skeet -->
+
+<div th:fragment="skeet-modal" class="modal fade skeetMod" id="modalSkeet1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form th:action="@{/postSkeet}" modelAttribute="skeet" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New skeet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label"></label>
+                            <textarea maxlength="140" name="tweet" class="form-control" id="message-text" placeholder="Write your skeet, max 140 characters" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="img-url" class="col-form-label"></label>
+                            <input type="text" name="img" class="form-control" id="img-url" placeholder="Paste image url here to add an image to you skeet">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Full Height Modal Right -->
+<div th:fragment="profile-modal" class="modal fade right profileMod" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="superModal"
+     aria-hidden="true">
+
+    <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+    <div class="modal-dialog modal-full-height modal-side modal-right" role="document">
+
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="superModal">Modal title</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Full Height Modal Right -->
+
+
+</body>
+</html>

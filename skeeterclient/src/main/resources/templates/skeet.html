@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+<div th:fragment="allskeets">
+    <div th:each="skeet:${skeets}" >
+        <div class="card m-4">
+            <div class="card-header" th:each="us:${users.?[id==__${skeet.userId}__]}">
+                <h5 class="card-text" th:text="${us.firstName}+' '+${us.lastName}"></h5>
+                <a href="/userProfile">
+                    <small class="card-text" th:text="'@'+${us.username}"></small>
+                </a>
+            </div>
+            <img class="img-fluid" th:if="${skeet.img}" th:src="${skeet.img}">
+            <div class="card-body">
+                <p class="card-text" th:text="${skeet.tweet}"></p>
+                <div sec:authorize="isAuthenticated()">
+                    <td th:switch="${user.role}">
+                        <a th:case="'ADMIN'" th:href="@{/deleteSkeet}+'/'+${skeet.id}"> <i class="fas fa-trash-alt"></i> </a>
+                        <p th:case="'USER'"></p>
+                    </td>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
